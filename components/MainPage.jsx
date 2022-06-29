@@ -58,7 +58,7 @@ export default function MainPage() {
                 locations={[0, 0.2, 0.9]}
                 style={{ flex: 5, width: '85%', justifyContent: 'center', alignContent: 'center', alignSelf: 'center', borderRadius: 10, marginTop: 20, }}></LinearGradient>
             {tasklist.length == 0 ? <ZeroTasks /> : <TaskList tasklist={tasklist} />}
-            <CustButton text={'Add Task'} handleClick={() => { setModalVisible(true) }} color={'dodgerblue'} setModalVisible={setModalVisible} modalVisible={modalVisible} />
+            <CustButton text={'Add Task'} colors={['#63a4ff', '#83eaf1']} handleClick={() => { setModalVisible(true) }} color={'dodgerblue'} setModalVisible={setModalVisible} modalVisible={modalVisible} />
             <Modal
                 transparent
                 animationType='slide'
@@ -69,4 +69,3 @@ export default function MainPage() {
         </View>
     )
 }
-

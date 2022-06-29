@@ -1,55 +1,48 @@
-import React from 'react'
-import { StyleSheet, Text, View, Image, ScrollView, TextInput, TouchableOpacity, TouchableWithoutFeedback, KeyboardAvoidingView, TouchableHighlight, Pressable, Button } from 'react-native';
-import { useDimensions } from '@react-native-community/hooks';
-import { LinearGradient } from 'expo-linear-gradient';
+import { StyleSheet, Text, View, Image, ScrollView, Pressable, Modal, Button, } from 'react-native';
 
 
+export default function Header({ numberOfTasks }) {
 
-export default function ({ text, color, handleClick }) {
     const styles = StyleSheet.create({
-        inputcontainer: {
-            height: '10%',
-            width: '100%',
+        paddingLeft: {
+            paddingLeft: 20,
+        },
+        flexRow: {
             flexDirection: 'row',
             alignItems: 'center',
-            justifyContent: 'center',
+            justifyContent: 'space-between',
         },
-
-        input: {
-            height: 60,
-            borderWidth: 2,
-            borderColor: 'grey',
+        headerContainer: {
+            flex: 3,
+            paddingTop: 30,
             paddingHorizontal: 20,
-            fontSize: 16,
-            width: useDimensions().window.width / 1.5,
-            borderRadius: 40,
+            borderBottomStartRadius: 20,
+            borderBottomEndRadius: 20,
+        }
+        ,
+        header1: {
+            fontSize: 24,
+            fontFamily: 'raleway-bold',
         },
 
-        addIcon: {
-            height: 60,
-            width: 60,
-            shadowColor: '#000',
-            shadowOffset: {
-                width: 0,
-                height: 2,
-            },
-            shadowOpacity: 0.25,
-            shadowRadius: 3.84,
-            elevation: 5,
+        avatar: {
+            borderRadius: 15,
+            height: 55,
+            width: 55,
+            // borderWidth: 2,
+            // borderColor: 'skyblue',
+        },
+        subtitle: {
+            color: 'grey',
+            fontFamily: 'raleway-regular',
         },
     })
     return (
-        <View style={styles.inputcontainer}>
-            <TouchableOpacity onPress={handleClick} activeOpacity={0.6} style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                height: 50,
-                width: 100,
-                backgroundColor: color,
-                borderRadius: 30,
-            }}>
-                <Text style={{ color: 'white', fontFamily: 'raleway-bold', fontSize: 16 }}>{text}</Text>
-            </TouchableOpacity>
-        </View>
-    )
+        <View style={[styles.headerContainer, styles.flexRow]}>
+            <View style={[styles.paddingLeft]}>
+                <Text style={styles.header1}>My Tasks</Text>
+                <Text style={styles.subtitle}>{numberOfTasks > 0 ? numberOfTasks : 0} tasks for today</Text>
+            </View>
+            <Image style={styles.avatar} resizeMode="contain" source={require('../assets/avatar.jpg')} ></Image>
+        </View>)
 }

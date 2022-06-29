@@ -43,9 +43,9 @@ export default function PopupModal({ handleClose, addTask, task, setTask }) {
         }
         ,
         labels: {
-            fontFamily: 'raleway-regular',
-            fontSize: 16,
-            color: '#7a7777',
+            fontFamily: 'raleway-bold',
+            fontSize: 18,
+            color: 'tomato',
         },
     })
     return (
@@ -54,22 +54,22 @@ export default function PopupModal({ handleClose, addTask, task, setTask }) {
         <View style={styles.centeredView}>
             <View style={styles.modalView}>
                 <TouchableOpacity onPress={() => { handleClose() }} style={styles.closeIconView}><Image style={styles.closeIcon} source={require('../assets/clear.png')}></Image></TouchableOpacity>
-                <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start' }}><Text style={{ fontSize: 20, fontFamily: 'raleway-bold', color: 'tomato' }}>Create a New Task</Text></View>
+                <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start', marginBottom: 20, }}><Text style={{ fontSize: 22, fontFamily: 'raleway-bold', color: 'tomato' }}>Create New Task</Text></View>
                 <KeyboardAvoidingView enabled={true} style={{
                     paddingVertical: 40,
                 }}>
                     <View style={styles.inputBoxes}>
                         <Text style={styles.labels}>Task Title</Text>
-                        <TextInput onChangeText={(text) => { setTask({ ...task, tasktitle: text }); }} placeholder='Go to the groceries...' style={{ paddingVertical: 0, paddingHorizontal: 20, height: 45, width: 300, fontSize: 15, borderWidth: 1, borderColor: '#e1e1e1', marginVertical: 5, color: '#575757', fontFamily: 'raleway-medium-italic' }}>
+                        <TextInput spellCheck={true} selectionColor={'dodgerblue'} onChangeText={(text) => { setTask({ ...task, tasktitle: text }); }} placeholder='Start here...' style={{ width: 300, fontSize: 19, marginVertical: 5, color: '#575757', fontFamily: 'raleway-medium-italic' }}>
                         </TextInput></View>
                     <View style={styles.inputBoxes}>
                         <Text style={styles.labels}>Description</Text>
-                        <TextInput onChangeText={(text) => { setTask({ ...task, desc: text }); }} multiline textAlignVertical='top' numberOfLines={5} placeholder='Go to the groceries at 12pm and withdraw money from the atm. ' style={{ fontFamily: 'raleway-medium-italic', paddingHorizontal: 20, paddingTop: 10, width: 300, fontSize: 15, marginVertical: 5, color: '#575757', fontWeight: '400', borderWidth: 1, borderColor: '#e1e1e1' }}>
+                        <TextInput onChangeText={(text) => { setTask({ ...task, desc: text }); }} multiline textAlignVertical='top' numberOfLines={5} placeholder='Go to the groceries at 12pm and withdraw money from the atm. ' style={{ fontFamily: 'raleway-medium-italic', width: 300, fontSize: 19, marginVertical: 5, color: '#575757', fontWeight: '400' }}>
                         </TextInput>
                     </View>
                 </KeyboardAvoidingView>
-                <CustButton color={'tomato'} handleClick={addTask} task={task} text={'Add'} />
-            </View>
-        </View>
+                <CustButton colors={['#ee8c68', '#eb6b9d']} handleClick={addTask} task={task} text={'Create'} />
+            </View >
+        </View >
     )
 }
