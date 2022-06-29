@@ -1,48 +1,59 @@
-import { StyleSheet, Text, View, Image, ScrollView, Pressable, Modal, Button, } from 'react-native';
+import React from 'react'
+import { StyleSheet, Text, View, Image, ScrollView, TextInput, TouchableOpacity, TouchableWithoutFeedback, KeyboardAvoidingView, TouchableHighlight, Pressable, Button } from 'react-native';
+import { useDimensions } from '@react-native-community/hooks';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
-export default function Header({ numberOfTasks }) {
 
+export default function ({ text, colors, handleClick }) {
     const styles = StyleSheet.create({
-        paddingLeft: {
-            paddingLeft: 20,
-        },
-        flexRow: {
+        inputcontainer: {
+            height: '10%',
+            width: '100%',
             flexDirection: 'row',
             alignItems: 'center',
-            justifyContent: 'space-between',
-        },
-        headerContainer: {
-            flex: 3,
-            paddingTop: 30,
-            paddingHorizontal: 20,
-            borderBottomStartRadius: 20,
-            borderBottomEndRadius: 20,
-        }
-        ,
-        header1: {
-            fontSize: 24,
-            fontFamily: 'raleway-bold',
+            justifyContent: 'center',
         },
 
-        avatar: {
-            borderRadius: 15,
-            height: 55,
-            width: 55,
-            // borderWidth: 2,
-            // borderColor: 'skyblue',
+        input: {
+            height: 60,
+            borderWidth: 2,
+            borderColor: 'grey',
+            paddingHorizontal: 20,
+            fontSize: 16,
+            width: useDimensions().window.width / 1.5,
+            borderRadius: 40,
         },
-        subtitle: {
-            color: 'grey',
-            fontFamily: 'raleway-regular',
+
+        addIcon: {
+            height: 60,
+            width: 60,
+            shadowColor: '#000',
+            shadowOffset: {
+                width: 0,
+                height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            elevation: 5,
         },
     })
     return (
-        <View style={[styles.headerContainer, styles.flexRow]}>
-            <View style={[styles.paddingLeft]}>
-                <Text style={styles.header1}>My Tasks</Text>
-                <Text style={styles.subtitle}>{numberOfTasks > 0 ? numberOfTasks : 0} tasks for today</Text>
-            </View>
-            <Image style={styles.avatar} resizeMode="contain" source={require('../assets/avatar.jpg')} ></Image>
-        </View>)
+        <View style={styles.inputcontainer}>
+            <TouchableOpacity onPress={handleClick} activeOpacity={0.6}>
+                <LinearGradient colors={colors} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: 50,
+                    width: 100,
+                    borderRadius: 30,
+                    marginTop: -30,
+                }}
+                    locations={colors.length == 2 ? [0.1, 0.8] : [0, 0.3, 0.9]}
+                >
+                    <Text style={{ color: 'white', fontFamily: 'raleway-bold', fontSize: 16 }}>{text}</Text>
+                </LinearGradient>
+            </TouchableOpacity>
+        </View>
+    )
 }
