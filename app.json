@@ -4,13 +4,26 @@
     "slug": "KarteRaho",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/to-do-list.png",
     "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/to-do-list.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/to-do-list.png",
+          "color": "#ffffff",
+          "sounds": [
+            "./assets/note1.wav",
+            "./assets/note2.wav"
+          ]
+        }
+      ]
+    ],
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -22,12 +35,14 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/to-do-list.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.madwhopaka.KarteRaho"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "A to-do list app with temperature ! "
   }
 }
