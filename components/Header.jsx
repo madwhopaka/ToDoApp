@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, ScrollView, Pressable, Modal, Button, } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Pressable, Modal, Button, Picker } from 'react-native';
 
 
 export default function Header({ numberOfTasks }) {
@@ -6,6 +6,7 @@ export default function Header({ numberOfTasks }) {
     const styles = StyleSheet.create({
         paddingLeft: {
             paddingLeft: 20,
+            flex: 4,
         },
         flexRow: {
             flexDirection: 'row',
